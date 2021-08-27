@@ -1,3 +1,6 @@
 *
 !.gitignore
+!Scripts/
+!Scripts
 !/Scripts/
+!/Scripts
