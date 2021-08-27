@@ -1,0 +1,203 @@
+#!/home/martowerubuntu/.local/bin/stack
+{- stack
+   script
+   --resolver lts-14.20
+   --package req
+   --package aeson
+   --package text
+   --package pretty-terminal
+    
+-}
+
+{-# LANGUAGE OverloadedStrings #-}
+
+import qualified Data.Text.IO as T
+import System.Console.Pretty (Color (..), Style (..), bgColor, color,
+                                        style, supportsPretty)
+
+main :: IO ()
+main = do
+  inColor <- supportsPretty
+  if inColor then charmander
+             else putStrLn "Sorry, this terminal doesn't support pretty ANSI codes"
+
+charmander :: IO ()
+charmander = do
+  -- 2 lines white
+  putStrLn ( bgColor White $ take 50 $ cycle " " )
+  putStrLn ( bgColor White $ take 50 $ cycle " " )
+
+  -- 1st line with color
+  putStr( bgColor White $ take 12 $ cycle " " )
+  putStr( bgColor Black $ take 8 $ cycle " " )
+  putStr( bgColor White $ take 18 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 10 $ cycle " " )
+
+  putStr( bgColor White $ take 10 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 14 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Red $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 8 $ cycle " " )
+
+  putStr( bgColor White $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 12 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 12 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Red $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 6 $ cycle " " )
+
+  putStr( bgColor White $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 12 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 12 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Red $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 6 $ cycle " " )
+
+  putStr( bgColor White $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 16 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Red $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 4 $ cycle " " )
+
+  putStr( bgColor White $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 8 $ cycle " " )
+  putStr( bgColor White $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Red $ take 4 $ cycle " " )
+  putStr( bgColor Yellow $ take 2 $ cycle " " )
+  putStr( bgColor Red $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 4 $ cycle " " )
+
+  putStr( bgColor White $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStr( bgColor Green $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Red $ take 2 $ cycle " " )
+  putStr( bgColor Yellow $ take 4 $ cycle " " )
+  putStr( bgColor Red $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 4 $ cycle " " )
+
+  putStr( bgColor White $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStr( bgColor Green $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Yellow $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStrLn( bgColor White $ take 6 $ cycle " " )
+
+  putStr( bgColor White $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 20 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 8 $ cycle " " )
+
+  putStr( bgColor White $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStr( bgColor Green $ take 18 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor White $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 8 $ cycle " " )
+
+  putStr( bgColor White $ take 12 $ cycle " " )
+  putStr( bgColor Black $ take 6 $ cycle " " )
+  putStr( bgColor Green $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStr( bgColor Green $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 10 $ cycle " " )
+
+  putStr( bgColor White $ take 14 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Yellow $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 10 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 4 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 10 $ cycle " " )
+
+  putStr( bgColor White $ take 14 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Yellow $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStr( bgColor Green $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 12 $ cycle " " )
+
+  putStr( bgColor White $ take 12 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Cyan $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Yellow $ take 6 $ cycle " " )
+  putStr( bgColor Green $ take 8 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStrLn( bgColor White $ take 14 $ cycle " " )
+
+  putStr( bgColor White $ take 14 $ cycle " " )
+  putStr( bgColor Black $ take 6 $ cycle " " )
+  putStr( bgColor Yellow $ take 4 $ cycle " " )
+  putStr( bgColor Green $ take 6 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStrLn( bgColor White $ take 16 $ cycle " " )
+
+  putStr( bgColor White $ take 20 $ cycle " " )
+  putStr( bgColor Black $ take 6 $ cycle " " )
+  putStr( bgColor Green $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 4 $ cycle " " )
+  putStrLn( bgColor White $ take 18 $ cycle " " )
+
+  putStr( bgColor White $ take 22 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStr( bgColor Cyan $ take 2 $ cycle " " )
+  putStr( bgColor Green $ take 2 $ cycle " " )
+  putStr( bgColor Cyan $ take 2 $ cycle " " )
+  putStr( bgColor Black $ take 2 $ cycle " " )
+  putStrLn( bgColor White $ take 18 $ cycle " " )
+
+  putStr( bgColor White $ take 24 $ cycle " " )
+  putStr( bgColor Black $ take 8 $ cycle " " )
+  putStrLn( bgColor White $ take 18 $ cycle " " )
+
+  putStrLn ( bgColor White $ take 50 $ cycle " " )
+  putStrLn ( bgColor White $ take 50 $ cycle " " )

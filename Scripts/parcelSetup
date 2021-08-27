@@ -1,0 +1,38 @@
+#!/bin/bash
+
+function buildFolder {
+    mkdir "$1" && 
+    cd "$1" && 
+    #  setup html and js file
+    touch index.html index.js &&
+
+    echo '<html>
+<body>
+<main></main>
+<script src="./index.js"></script>
+</body>
+</html>' >> index.html 
+
+    echo 'import { Elm } from "./src/Main.elm"
+Elm.Main.init({
+    node: document.querySelector("main")
+})' >> index.js
+
+    # setup elm file 
+    mkdir "src"
+    touch ./src/Main.elm
+
+    echo 'module Main exposing (main)
+import Browser
+import Html exposing (h1, text)
+main =
+    h1 [] [ text "Hello, Elm!" ]' >> ./src/Main.elm
+
+}
+
+if [ $# == 1 ]
+then 
+    buildFolder "$1";
+else 
+    exit 0;
+fi

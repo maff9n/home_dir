@@ -1,0 +1,15 @@
+#!/bin/bash
+
+DIR="$HOME/shellScripts/tmp/vpn"
+
+rm -rf $DIR
+mkdir $DIR
+
+echo "Aligator3" > $DIR/psw
+echo "Aligator3." >> $DIR/psw
+
+echo "In case something strange happens look up the logs at $DIR before you start the next attempt"
+echo "..."
+
+sudo -S openconnect -u s8914022@zih-ma-vpn --passwd-on-stdin --authgroup=A-Tunnel-TU-Networks vpn2.zih.tu-dresden.de < $DIR/psw 2> $DIR/error.log 1> $DIR/output.log
+
