@@ -1,3 +1,5 @@
-# source bashrc_extension
-# . .bashrc_extension   <-- zsh
-pls=sudo
+#!/bin/bash
+# source ./.bashrc_extension     <-- bashrc
+# . ./.bashrc_extension          <-- zshrc
+
+alias pls="sudo"
