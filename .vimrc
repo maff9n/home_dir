@@ -35,7 +35,7 @@ map ü <C-w>q
 map Ü :on<CR>
 map ä <C-w>s
 map ö <C-w>v 
-map ' <C-w>=
+"map ' <C-w>=
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
