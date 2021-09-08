@@ -2,13 +2,13 @@
 !/Scripts/
 !/.static/
 
-!/.config
-/.config/*
-!/.config/i3/
+!.config
+.config/*
+!.config/i3/
 
 !.vim
-/.vim/*
-!/.vim/autoload/
+.vim/*
+!.vim/autoload/
 
 !.bashrc_extension
 !.vimrc
