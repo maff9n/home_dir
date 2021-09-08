@@ -1,7 +1,7 @@
 *
 !/Scripts/
-!/.vim/autoload/
-!/.config/i3/
+!.vim/autoload/
+!.config/i3/
 !.bashrc_extension
 !.vimrc
 !.static/
