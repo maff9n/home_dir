@@ -3,5 +3,5 @@
 !/.vim/autoload/
 !.bashrc_extension
 !.vimrc
-!.config/i3/
+!/.config/i3/config
 !.static/
