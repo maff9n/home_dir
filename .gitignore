@@ -5,6 +5,8 @@
 !.config
 /.config/*
 !.config/i3/
+/.config/i3/*
+!.config/i3/config
 
 !.vim
 /.vim/*
