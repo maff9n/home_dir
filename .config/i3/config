@@ -271,8 +271,9 @@ bindsym $mod+0 exec i3lock -i ~/.static/wallpaper.png
 
 bindsym $mod+p exec gnome-screenshot
 
-# ToInstall
-# i3 - gaps - blocks - block
+# Install:
+# i3
+# i3 gaps https://github.com/Airblader/i3/wiki/installation
+# i3 blocks 
 # imagemagick
-# pulseaudio + pavucontrol
-#
+# i3lock
