@@ -2,8 +2,8 @@
 !/Scripts/
 !/.static/
 
-!.config
-.config/*
+!/.config
+/.config/*
 !/.config/i3/
 
 !.vim
