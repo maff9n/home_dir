@@ -277,3 +277,4 @@ bindsym $mod+p exec gnome-screenshot
 # i3 blocks 
 # imagemagick
 # i3lock
+# redshift
