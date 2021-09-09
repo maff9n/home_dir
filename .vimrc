@@ -1,4 +1,5 @@
 syntax on
+" set clipboard=unnamedplus to use the system clipboard ???
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
