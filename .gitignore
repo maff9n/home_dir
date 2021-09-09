@@ -1,16 +1,18 @@
 /*
 !/Scripts/
 !/.static/
+!/.oh-my-zsh/
 
-!.config
+!/.config/
 /.config/*
-!.config/i3/
+!/.config/i3/
 /.config/i3/*
-!.config/i3/config
+!/.config/i3/config
 
-!.vim
+!/.vim/
 /.vim/*
-!.vim/autoload/
+!/.vim/autoload/
 
 !.bashrc_extension
+!.zshrc
 !.vimrc
