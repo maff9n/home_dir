@@ -278,3 +278,4 @@ bindsym $mod+p exec gnome-screenshot
 # imagemagick
 # i3lock
 # redshift
+# pulseaudio pavucontrol
