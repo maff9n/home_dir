@@ -279,3 +279,4 @@ bindsym $mod+p exec gnome-screenshot
 # i3lock
 # redshift
 # pulseaudio pavucontrol
+# powerline (zsh theme symbols in the terminal)
