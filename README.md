@@ -7,7 +7,6 @@ This repository is currently controlling:
 
 ### Components to install
 - i3
-- i3 gaps https://github.com/Airblader/i3/wiki/installation
 - i3 blocks 
 - i3lock
 - imagemagick
@@ -17,10 +16,11 @@ This repository is currently controlling:
 - oh-my-zsh
 - powerline
 
+### What else to do
+- Extend $PATH in your .profile file to search in /Scripts as well 
+
 ### What I need to do next to improve this repository
-- exclude i3 gaps
-- setup screenshoting
-- setup screenrecording
+
 - setup copy/paste with the different buffers of vim
 
-                                                    
+  ​                                                  

@@ -6,3 +6,5 @@ alias pls="sudo"
 alias i3conf="vim ~/.config/i3/config"
 alias audio="pavucontrol"
 
+
+
