@@ -15,6 +15,7 @@ This repository is mainly controlling:
 - zsh
 - oh-my-zsh
 - powerline
+- ffmpeg
 
 ### What else to do
 - Extend .profile with .profile_extension

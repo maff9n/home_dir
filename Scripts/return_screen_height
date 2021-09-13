@@ -1,0 +1,5 @@
+#!/bin/bash
+
+VAL1=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+VAL2=100
+expr $VAL1 - $VAL2

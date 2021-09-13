@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pkill -f /dev/video || ffplay -x 400 -y 300 -preset ultrafast -tune zerolatency -an /dev/video0
