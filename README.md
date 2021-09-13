@@ -1,7 +1,7 @@
 ## home_dir
 This repository is meant to unify my linux distributions and let me keep my customizations consistent.  
-This repository is currently controlling:
-- i3 (blocks, gaps)
+This repository is mainly controlling:
+- i3 (blocks)
 - zsh
 - vim
 
