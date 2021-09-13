@@ -113,5 +113,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-. ./.bashrc_extension
+. $HOME/.shell_extension
 

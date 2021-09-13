@@ -282,4 +282,3 @@ mode "Screenshot of: (W)hole Page, (R)egion" {
 
 bindsym $mod+Shift+s mode "Screenshot of: (W)hole Page, (R)egion"
 
-

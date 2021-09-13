@@ -12,6 +12,7 @@
 /.vim/*
 !/.vim/autoload/
 
-!.bashrc_extension
+!.profile_extension
+!.shell_extension
 !.zshrc
 !.vimrc

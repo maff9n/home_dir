@@ -17,7 +17,7 @@ This repository is currently controlling:
 - powerline
 
 ### What else to do
-- Extend $PATH in your .profile file to search in /Scripts as well 
+- Extend .profile with .profile_extension
 
 ### What I need to do next to improve this repository
 
