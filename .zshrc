@@ -113,5 +113,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-. $HOME/.shell_extension
+source $HOME/.shell_extension
 
+FILE=$HOME/.shell_extension_local && test -f $FILE && source $FILE
