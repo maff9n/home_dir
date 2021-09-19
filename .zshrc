@@ -9,7 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -113,6 +112,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source $HOME/.shell_extension
 
 FILE=$HOME/.shell_extension_local && test -f $FILE && source $FILE
+source $HOME/.shell_extension
+

@@ -1,4 +1,6 @@
 syntax on
+filetype plugin indent on
+
 " set clipboard=unnamedplus to use the system clipboard ???
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -9,6 +11,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 nnoremap # <Nop>
@@ -29,7 +33,7 @@ set smartcase
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set smartindent
+"set smartindent
 
 " **** window managment ****
 map ü <C-w>q
@@ -42,6 +46,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-"colorscheme gruvbox
-"set background=dark
+colorscheme gruvbox
+set background=dark
 

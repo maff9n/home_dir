@@ -1,3 +1,36 @@
 #!/bin/bash
 
-pkill -f /dev/video || ffplay -x 400 -y 300 -preset ultrafast -tune zerolatency -an /dev/video0
+#Adjust area within the camera image
+X=100
+Y=0
+
+#Everything else you propably dont wanna change 
+WIDTH=500
+HEIGHT=320
+
+pushwf (){
+    VAL1=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+    VAL2=100
+#    echo $((($VAL1 - $WIDTH)/2+100))
+    expr 500
+}
+
+pushhf (){
+    VAL1=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+    VAL2=100
+#    echo $((($VAL1 - $HEIGHT)/2+100))
+    echo 0
+}
+
+if [ $# -eq 0 ]
+  then
+      pkill -f /dev/video || ffplay -framerate 30 -video_size 640x320 -input_format mjpeg -vf "crop=$WIDTH:$HEIGHT:$X:$Y" -an /dev/video0
+  else
+      case $1 in 
+         "-pushw") pushwf ;;
+         "-pushh") pushhf ;;
+         *) printf "Something went wrong" ;;
+      esac
+fi
+
+
