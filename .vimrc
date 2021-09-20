@@ -11,8 +11,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 nnoremap # <Nop>
@@ -28,12 +28,13 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set relativenumber
+set nu
 set nowrap
 set smartcase
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-"set smartindent
+set smartindent
 
 " **** window managment ****
 map ü <C-w>q
