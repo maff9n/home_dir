@@ -11,7 +11,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
