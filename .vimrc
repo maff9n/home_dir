@@ -10,7 +10,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 Plug 'dense-analysis/ale'
@@ -52,3 +52,5 @@ map <C-l> <C-w>l
 colorscheme gruvbox
 set background=dark
 
+let b:ale_fixers = ['prettier', 'eslint']
+let g:ale_fix_on_save = 1
