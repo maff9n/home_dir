@@ -38,12 +38,13 @@ set rtp+=~/.local/bin/fzf
 "Shortcuts/Mapping
 ""Vim
 nnoremap # <Nop>
+nnoremap <C-q> <Nop>
 nnoremap ' <Nop>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>o :FZF<CR>
-map ü <C-w>q
+map <C-q> <C-w>q
 map Ü :on<CR>
 map ä <C-w>s
 map ö <C-w>v 
@@ -53,7 +54,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 ""NERDTree
 let NERDTreeMapToggleHidden='<C-h>'
-
+""FZF
+"let FZF_DEFAULT_OPTS='fd --hidden'
 
 "ColorThemes
 ""Vim
@@ -64,5 +66,4 @@ let g:airline_theme='gruvbox'
 
 
 
-
-
+let g:airline_powerline_fonts = 1

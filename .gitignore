@@ -8,6 +8,8 @@
 /.config/i3/*
 !/.config/i3/config
 
+!/.config/redshift.conf 
+
 !/.vim/
 /.vim/*
 !/.vim/autoload/

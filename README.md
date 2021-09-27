@@ -10,12 +10,13 @@ This repository is mainly controlling:
 - i3 blocks 
 - i3lock
 - imagemagick
-- redshift
+- redshift-gtk
 - pulseaudio pavucontrol
 - zsh
 - oh-my-zsh
 - powerline
 - ffmpeg
+- fzf
 
 ### What else to do
 - Extend .profile with .profile_extension
