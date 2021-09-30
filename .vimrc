@@ -36,15 +36,14 @@ set rtp+=~/.local/bin/fzf
 
 
 "Shortcuts/Mapping
-""Vim
 nnoremap # <Nop>
-nnoremap <C-q> <Nop>
 nnoremap ' <Nop>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>o :FZF<CR>
-map <C-q> <C-w>q
+map <C-s> :w<CR>
+map <C-q> :confirm q<CR>
 map Ü :on<CR>
 map ä <C-w>s
 map ö <C-w>v 
