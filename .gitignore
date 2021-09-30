@@ -10,6 +10,8 @@
 
 !/.config/redshift.conf 
 
+!/.config/bat/themes/*
+
 !/.vim/
 /.vim/*
 !/.vim/autoload/
