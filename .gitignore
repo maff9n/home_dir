@@ -8,6 +8,10 @@
 /.config/i3/*
 !/.config/i3/config
 
+!/.config/ranger/
+/.config/ranger/*
+!/.config/ranger/rifle.conf
+
 !/.config/redshift.conf 
 
 !/.vim/

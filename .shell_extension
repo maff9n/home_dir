@@ -8,4 +8,4 @@ alias audio="pavucontrol"
 alias vconf="vim ~/.vimrc"
 alias f="startwithfzf"
 alias r="ranger"
-
+alias ws="cd ~/Projects/cyberus-workstation/"
