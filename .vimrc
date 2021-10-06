@@ -39,9 +39,12 @@ set rtp+=~/.local/bin/fzf
 nnoremap # <Nop>
 nnoremap ' <Nop>
 nnoremap <SPACE> <Nop>
+
 let mapleader = " "
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>o :FZF<CR>
+nnoremap <leader>p :r!
+
 map <C-s> :w<CR>
 map <C-q> :confirm q<CR>
 map Ü :on<CR>
