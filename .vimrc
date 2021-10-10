@@ -25,6 +25,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
 Plug 'morhetz/gruvbox'
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
@@ -41,11 +42,10 @@ nnoremap ' <Nop>
 nnoremap <SPACE> <Nop>
 
 let mapleader = " "
-nnoremap <leader>n :NERDTreeFind<CR>
-nnoremap <leader>o :FZF<CR>
 nnoremap <leader>p :r!
 
 map <C-s> :w<CR>
+imap <C-s> <Esc>:w<CR>
 map <C-q> :confirm q<CR>
 map Ü :on<CR>
 map ä <C-w>s
@@ -55,9 +55,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 ""NERDTree
+nnoremap <leader>n :NERDTreeFind<CR>
 let NERDTreeMapToggleHidden='<C-h>'
 ""FZF
-"let FZF_DEFAULT_OPTS='fd --hidden'
+nnoremap <leader>o :FZF<CR>
+let FZF_DEFAULT_COMMAND='rg --files --no-ignore'
 
 "ColorThemes
 ""Vim

@@ -116,3 +116,4 @@ unset __conda_setup
 FILE=$HOME/.shell_extension_local && test -f $FILE && source $FILE
 source $HOME/.shell_extension
 
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
