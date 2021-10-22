@@ -117,3 +117,7 @@ FILE=$HOME/.shell_extension_local && test -f $FILE && source $FILE
 source $HOME/.shell_extension
 
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+#
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"

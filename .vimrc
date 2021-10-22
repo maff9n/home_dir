@@ -59,7 +59,7 @@ nnoremap <leader>n :NERDTreeFind<CR>
 let NERDTreeMapToggleHidden='<C-h>'
 ""FZF
 nnoremap <leader>o :FZF<CR>
-let FZF_DEFAULT_COMMAND='rg --files --no-ignore'
+let FZF_DEFAULT_COMMAND='fd -I -H -i -t f --exclude node_modules --exclude .git'
 
 "ColorThemes
 ""Vim
