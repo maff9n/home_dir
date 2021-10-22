@@ -47,6 +47,7 @@ nnoremap <leader>p :r!
 map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
 map <C-q> :confirm q<CR>
+imap <C-q> <Esc>:confirm q<CR>
 map Ü :on<CR>
 map ä <C-w>s
 map ö <C-w>v 
