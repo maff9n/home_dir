@@ -14,7 +14,6 @@ set smartindent
 syntax on
 filetype plugin indent on
 
-
 "Plugin Managment
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -35,32 +34,46 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 set rtp+=~/.local/bin/fzf
 
-
 "Shortcuts/Mapping
 nnoremap # <Nop>
 nnoremap ' <Nop>
 nnoremap <SPACE> <Nop>
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 let mapleader = " "
 nnoremap <leader>p :r!
+nnoremap <leader>n :NERDTreeFind<CR>
+nnoremap <leader>o :FZF<CR>
 
 map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
 map <C-q> :confirm q<CR>
 imap <C-q> <Esc>:confirm q<CR>
-map Ü :on<CR>
-map ä <C-w>s
-map ö <C-w>v 
+
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+inoremap . .<C-g>u
+inoremap ? ?<C-g>u
+inoremap ! !<C-g>u
+inoremap / /<C-g>u
+inoremap [ [<C-g>u
+inoremap ] ]<C-g>u
+inoremap ( (<C-g>u
+inoremap ) )<C-g>u
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap J :m .+1<CR>== 
+nnoremap K :m .-2<CR>== 
+
 ""NERDTree
-nnoremap <leader>n :NERDTreeFind<CR>
 let NERDTreeMapToggleHidden='<C-h>'
 ""FZF
-nnoremap <leader>o :FZF<CR>
-let FZF_DEFAULT_COMMAND='fd -I -H -i -t f --exclude node_modules --exclude .git'
+let FZF_DEFAULT_COMMAND='fd -p -IH -t f -E node_modules -E .git'
 
 "ColorThemes
 ""Vim
@@ -85,5 +98,5 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 
-
 let g:airline_powerline_fonts = 1
+

@@ -1,11 +1,25 @@
 #!/bin/bash
-# source ./.bashrc_extension     <-- bashrc
-# . ./.bashrc_extension          <-- zshrc
 
 alias pls="sudo"
 alias i3conf="vim ~/.config/i3/config"
 alias audio="pavucontrol"
 alias vconf="vim ~/.vimrc"
-alias f="startwithfzf"
+alias f=fuzzy
+alias ff=fuzzyProject
 alias r="ranger"
 alias ws="cd ~/Projects/cyberus-workstation/"
+
+function fuzzy(){
+    value=$(fd -p -IH -t f -E node_modules -E .git | fzf)
+    if [ -n "$value" ] ; then
+        vim $value
+    fi
+}
+
+function fuzzyProject(){
+    value=$(fd -p -H -t f -E node_modules -E .git | fzf)
+    if [ -n "$value" ] ; then
+        vim $value
+    fi
+}
+
