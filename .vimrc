@@ -65,6 +65,11 @@ inoremap ] ]<C-g>u
 inoremap ( (<C-g>u
 inoremap ) )<C-g>u
 
+vnoremap > >gv
+vnoremap < <gv
+nnoremap < <<
+nnoremap > >>
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap J :m .+1<CR>== 
