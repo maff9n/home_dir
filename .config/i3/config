@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-
+focus_follows_mouse no
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
@@ -288,10 +288,15 @@ mode "Screenshot of: (W)hole Page, (R)egion" {
 
 bindsym $mod+Shift+s mode "Screenshot of: (W)hole Page, (R)egion"
 
-bindsym $mod+Shift+a exec floating_webcam
+# currently hard to grap since webcam is broken on main machine
+bindsym $mod+X exec floating_webcam
 for_window [title="/dev/video0"] floating enable
 for_window [title="/dev/video0"] sticky enable
 for_window [title="/dev/video0"] move right 1024
 for_window [title="/dev/video0"] move down 533
 #for_window [title="/dev/video0"] move up 560
+
+bindsym $mod+Shift+Return exec tmux-starter
+bindsym $mod+Tab exec brave-browser
+# chrome://extensions/shortcuts
 

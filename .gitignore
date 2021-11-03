@@ -24,3 +24,6 @@
 !.shell_extension
 !.zshrc
 !.vimrc
+!.tmux.conf
+ 
+

@@ -78,7 +78,7 @@ nnoremap K :m .-2<CR>==
 ""NERDTree
 let NERDTreeMapToggleHidden='<C-h>'
 ""FZF
-let FZF_DEFAULT_COMMAND='fd -p -IH -t f -E node_modules -E .git'
+let FZF_DEFAULT_COMMAND='fd -p -I -H -t f -E node_modules -E .git'
 
 "ColorThemes
 ""Vim

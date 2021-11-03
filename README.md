@@ -5,6 +5,7 @@ This repository is mainly controlling:
 - i3 (blocks)
 - zsh
 - vim
+- tmux
 
 ### Components to install
 
@@ -23,11 +24,11 @@ This repository is mainly controlling:
 - airline
 - NERDTree
 
-
 ### What else to do
 
 - Extend .profile with .profile_extension
 - Extend .bashrc or zshrc or ... with .shell_extension
+
 ### What I need to do next to improve this repository
 
 - setup copy/paste with the different buffers of vim
