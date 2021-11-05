@@ -25,5 +25,4 @@
 !.zshrc
 !.vimrc
 !.tmux.conf
- 
-
+*.swp 
