@@ -90,7 +90,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -255,6 +255,7 @@ exec --no-startup-id redshift-gtk
 # shortcut to lock screen
 bindsym $mod+0 exec i3lock -i ~/.static/wallpaper.png
 
+bindsym $mod+Shift+Return exec tmux-starter
 # Auto start applications in certain workspaces
 # exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 2; exec urxvt; workspace 1' 
 
@@ -286,8 +287,6 @@ mode "Screenshot of: (W)hole Page, (R)egion" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+s mode "Screenshot of: (W)hole Page, (R)egion"
-
 # currently hard to grap since webcam is broken on main machine
 bindsym $mod+X exec floating_webcam
 for_window [title="/dev/video0"] floating enable
@@ -296,7 +295,16 @@ for_window [title="/dev/video0"] move right 1024
 for_window [title="/dev/video0"] move down 533
 #for_window [title="/dev/video0"] move up 560
 
-bindsym $mod+Shift+Return exec tmux-starter
-bindsym $mod+Tab exec brave-browser
-# chrome://extensions/shortcuts
 
+mode "(1)Brave (2)Thunderbird (8)FloatingCam (9)Screenshot" {
+    bindsym 1 exec brave-browser ; mode "default"
+    bindsym 2 exec thunderbird ; mode "default"
+    bindsym 9 mode "Screenshot of: (W)hole Page, (R)egion"
+    bindsym 8 exec floating_webcam ; mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+s mode "(1)Brave (2)Thunderbird (8)FloatingCam (9)Screenshot"
