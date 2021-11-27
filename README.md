@@ -4,7 +4,7 @@ This repository is meant to unify my linux distributions and let me keep my cust
 This repository is mainly controlling:
 - i3 (blocks)
 - zsh
-- vim
+- neovim
 - tmux
 
 ### Components to install
@@ -17,12 +17,7 @@ This repository is mainly controlling:
 - pulseaudio pavucontrol
 - zsh
 - oh-my-zsh
-- powerline
 - ffmpeg
-- fzf
-- bat
-- airline
-- NERDTree
 
 ### What else to do
 
@@ -33,4 +28,6 @@ This repository is mainly controlling:
 
 - setup copy/paste with the different buffers of vim
 - setup rofi
-- setup vim devicons                                      
+- setup devicons                                      
+- git extension inside vim
+

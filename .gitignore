@@ -8,21 +8,17 @@
 /.config/i3/*
 !/.config/i3/config
 
+!/.config/nvim/*
+/.config/nvim/init.vim
+
 !/.config/ranger/
 /.config/ranger/*
 !/.config/ranger/rifle.conf
 
 !/.config/redshift.conf 
 
-!/.config/bat/themes/*
-
-!/.vim/
-/.vim/*
-!/.vim/autoload/
-
 !.profile_extension
 !.shell_extension
 !.zshrc
-!.vimrc
 !.tmux.conf
-*.swp 
+!.gitignoreGLOBAL

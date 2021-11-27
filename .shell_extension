@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 alias pls="sudo"
 alias i3conf="vim ~/.config/i3/config"
 alias audio="pavucontrol"
-alias vconf="vim ~/.vimrc"
+alias vconf="vim ~/.config/nvim/init.vim"
 alias f=fuzzy
 alias ff=fuzzyProject
 alias r="ranger"
@@ -12,6 +12,7 @@ alias tor="sh -c '"$HOME/Programs/tor-browser_en-US/Browser/start-tor-browser" -
 alias ba="cd $HOME/Projects/bachelor_thesis_mann"
 alias c="git clean -ndx"
 alias cf="git clean -fdx"
+alias ls="ls -l"
 
 function fuzzy(){
     value=$(fd -p -IH -t f -E node_modules -E .git | fzf)

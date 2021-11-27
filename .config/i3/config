@@ -279,8 +279,8 @@ bindsym $mod+Shift+e mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 # exit i3 (logs you out of your X session)
 # Create Whole Page, Region bindings
 mode "Screenshot of: (W)hole Page, (R)egion" {
-        bindsym r --release exec i3-msg mode "default" && import ~/$(date '+%y%m%d%H%M%S').png 
-        bindsym w exec i3-msg mode "default" && sleep 0.1 && import -window root ~/$(date '+%y%m%d%H%M%S').png 
+        bindsym r --release exec i3-msg mode "default" && import ~/Pictures/screenshots/$(date '+%y%m%d%H%M%S').png 
+        bindsym w exec i3-msg mode "default" && sleep 0.1 && import -window root ~/Pictures/screenshots/$(date '+%y%m%d%H%M%S').png 
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -296,15 +296,17 @@ for_window [title="/dev/video0"] move down 533
 #for_window [title="/dev/video0"] move up 560
 
 
-mode "(1)Brave (2)Thunderbird (8)FloatingCam (9)Screenshot" {
+mode "(1)Brave (2)Thunderbird (3)Signal (7)Spotify (8)FloatingCam (9)Screenshot" {
     bindsym 1 exec brave-browser ; mode "default"
     bindsym 2 exec thunderbird ; mode "default"
     bindsym 9 mode "Screenshot of: (W)hole Page, (R)egion"
     bindsym 8 exec floating_webcam ; mode "default"
+    bindsym 3 exec signal-desktop ; mode "default"
+    bindsym 7 exec spotify ; mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
-bindsym $mod+s mode "(1)Brave (2)Thunderbird (8)FloatingCam (9)Screenshot"
+bindsym $mod+s mode "(1)Brave (2)Thunderbird (3)Signal (7)Spotify (8)FloatingCam (9)Screenshot"

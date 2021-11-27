@@ -1,3 +1,5 @@
 #!/bin/bash
 
 PATH=$PATH:~/Scripts/
+source "$HOME/.config/nvim/bundle/gruvbox/gruvbox_256palette.sh"
+
