@@ -10,7 +10,7 @@
 
 !/.config/nvim/
 /.config/nvim/*
-!/.config/nvim/bundle
+!/.config/nvim/bundle/gruvbox
 !/.config/nvim/colors
 !/.config/nvim/lua
 !/.config/nvim/init.vim
