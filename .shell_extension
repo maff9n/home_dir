@@ -13,6 +13,8 @@ alias ba="cd $HOME/Projects/bachelor_thesis_mann"
 alias c="git clean -ndx ; { save_clean=true ; sleep 3 ; save_clean=false } &"
 alias cf="git clean -fdx"
 alias ls="ls -l"
+alias ho="cd ~"
+alias li="cd '$HOME/Projects/cyberus-workstation/ubuntu/packages/linux-slvm'"
 
 save_clean=false
 
