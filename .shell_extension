@@ -1,6 +1,5 @@
 #!/bin/sh
 
-alias pls="sudo"
 alias i3conf="vim ~/.config/i3/config"
 alias audio="pavucontrol"
 alias vconf="vim ~/.config/nvim/init.vim"
@@ -15,8 +14,9 @@ alias cf="git clean -fdx"
 alias ls="ls -l"
 alias ho="cd ~"
 alias li="cd '$HOME/Projects/cyberus-workstation/ubuntu/packages/linux-slvm'"
+alias wttr='curl wttr.in/Dresden && echo ">>> command: curl wttr.in/Dresden"'
 
-save_clean=false
+# save_clean=false <-- what is this doing
 
 function fuzzy(){
     value=$(fd -p -IH -t f -E node_modules -E .git | fzf)
