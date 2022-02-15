@@ -1,0 +1,123 @@
+#!/bin/sh
+
+# PURPOSE OF THIS SCRIPT
+# This script is meant to speed up the weekly process of creating a WSR.
+# Either you can just forward the created text via email or you go a step further and make the created file a component of an existing repository aka wiki.
+# This script assumes that certain values or structurel characteristics of your WSR don't change and if they do you should be able to tweak the details in the lines below.
+# When this script speeds up the WSR managment for you aswell, I'd love to hear from you.
+# Regards Marvin
+
+
+###
+### The following variable you need to change
+###
+
+
+#The Name that is shown at the end of the WSR
+name="Marvin"
+
+
+###
+### The following variables you may wanna change
+###
+
+
+#Path where the WSR file shall be created. Potentially the path to the local WSR repository.
+local_directory="$HOME/Project/wsr"
+
+#Path to the editor I use
+editor=/bin/vim
+
+#The default file name is set to the following
+default_file_name="$(date +"WSR %G W%U")"
+
+
+###
+### The following variables you wanna change if you wanna include a link to your wiki in the email automatically
+###
+
+
+#Only used when Option GITLAB_LINK is set to true...
+#My Gitlab Name for accessing the WSR repository wiki
+gitlab_name="mmann"
+
+#Only used when Option GITLAB_LINK is set to true...
+#My Gitlab repository name where the wiki lives
+repository_name="wsr"
+
+#Only used when Option GITLAB_LINK is set to true...
+#Path to the remote WSR wiki
+wiki="https://gitlab.vpn.cyberus-technology.de/$gitlab_name/$repository_name/-/wikis/"
+
+
+###
+### Options
+###
+
+
+# Include a link in the email to the WSR repository wiki
+# true = include it
+# false = don't include it
+GITLAB_LINK=false
+
+# When the editor is closed the value of $default_file_name is copied to your clipboard assuming
+# you already copied the content of the file to the main field of your email client and now intend to add the subject information
+# true = copies $default_file_name to clipboard
+# false = doesn't copy $default_file_name to clipboard
+COPY_TO_CLIPBOARD=false
+
+# Right before the script is done - cd to the directory which path is stored in $dir assuming
+# you immediately wanna push your local changes to the remote repository (adds target of the link included in the file)
+# true = cds to the directory $dir
+# false = doesn't change the shell's current location
+COPY_TO_CLIPBOARD=false
+
+
+###
+### Execution
+###
+
+
+echo "Enter the name of the WSR file you intend to create. Press ENTER to use the default./br
+(Default: $default_file_name)"
+read "$custom_file_name"
+
+returnFinalFileName(){
+    if test -z "$custom_name" ; then
+        echo "$default_file_name"
+    else
+        echo "$custom_file_name"
+    fi
+}
+
+file_name=returnFinalFileName
+
+returnLinkToFileInRepository(){
+    file_name_link="${file_name// /%}"
+    echo "$wiki/file_name_link"
+}
+
+link_to_repository=returnLinkToFileInRepository
+
+
+if test ! -f "$FILE"; then
+    "$dir/$file_name" < echo " 
+Hi Team,
+
+
+find this WSR also here ([Gitlab]($link_to_repository)).
+
+
+## tl;dr  
+-  
+
+
+Thats it.
+
+
+Have a wonderful week  
+$my_name"
+fi
+
+vim "$dir/$file_name"
+
