@@ -36,7 +36,6 @@ editor=/bin/vim
 
 #The default name for the WSR file is set to the following
 default_file_name="$(date +"WSR%G-W%U")"
-default_remote_file_name="$(date +"WSR%G-W%U")"
 
 
 ###
@@ -79,11 +78,17 @@ ASK_TO_REMOVE_LINK=false
 # false = doesn't change the shell's current location
 CD_AFTER_EDDITING=true
 
+OPEN_HOME_FILE=true
+
 
 ###
 ### Execution starts - The following code you should not need to touch
 ###
 
+echo "Please type the name of the WSR file to be created. Or press ENTER to use the default name./n
+(default name: $default_file_name)"
+read -r custom_file_name
+custom_file_name="$(echo "$custom_file_name" | sed -i "s/[ \t]*$//")"
 
 if test -z "$custom_file_name" ; then
     file_name="$default_file_name"
@@ -156,7 +161,7 @@ addToWSR remainingMessage
 done_edditing(){
     echo "Are you done making changes to the file and ready to create the email sketch?/n
     Please type y or n"
-    read answer_done_edditing_question
+    read -r answer_done_edditing_question
 
     answer_done_edditing_question="$(echo "$answer_done_edditing_question" | sed -i "s/[ \t]*$//")"
 
@@ -165,31 +170,33 @@ done_edditing(){
             #thunderbird -compose "subject='$file_name',to='team@cyberus-technology.de',body='$(cat "$local_directory/$file_name")'"&
 
             if "$CD_AFTER_EDDITING"; then
-                cd $(dirname "$wiki_home_file")
+                cd "$(dirname "$wiki_home_file")" || echo "couldn't access wiki home file local directory" ; return 1
             fi
 
             if "$ASK_TO_REMOVE_LINK"; then
                 ask_user(){
                     echo "Do you wanna remove the link to the wiki from the local file?/n
                     Please type y or n"
-                    read answer_on_question_to_remove_link
+                    read -r answer_on_question_to_remove_link
 
                     answer_on_question_to_remove_link="$(echo "$answer_on_question_to_remove_link" | sed -i "s/[ \t]*$//")"
 
                     case "$answer_on_question_to_remove_link" in
                         y)
-                            sed -i "/$link_to_file/d" "$local_directory/$file_name" > "$local_directory/$file_name" ;;
+                            tmpfile=$(mktemp /tmp/abc-script.XXXXXX)
+                            sed -i "/$link_to_file/d" "$tmpfile" 
+                            echo tmpfile > "$local_directory/$file_name" ;;
                         n)
                             ;;
                         *)
                             ask_user;;
                     esac
                 }
-            ask_user
+                ask_user
             fi
 
             if "$OPEN_HOME_FILE"; then
-                xclip -sel c "["$file_name"]()" || echo "Please install xclip to use that functionality" ; return 1
+                xclip -sel c "[$file_name]()" || echo "Please install xclip to use that functionality" ; return 1
                 "$editor" "$wiki_home_file"
             fi
             ;;
