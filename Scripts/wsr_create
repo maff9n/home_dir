@@ -1,123 +1,202 @@
 #!/bin/sh
 
 # PURPOSE OF THIS SCRIPT
-# This script is meant to speed up the weekly process of creating a WSR.
-# Either you can just forward the created text via email or you go a step further and make the created file a component of an existing repository aka wiki.
-# This script assumes that certain values or structurel characteristics of your WSR don't change and if they do you should be able to tweak the details in the lines below.
-# When this script speeds up the WSR managment for you aswell, I'd love to hear from you.
+# This script is meant to speed up the weekly process of creating a WSR or similar texts.
+# Especially users who maintain a remote wiki for those documents should profit. 
+# For a user who is only focused on writing an email this script will still spare him some seconds but might be a slight over kill.
+# 
+# This script creates a WSR file, opens an editor, on close of the editor an email is sketched and help for maintaining the remote wiki repository is offered.
+#
+# If this script speeded up the WSR managment for you aswell, I'd love to hear from you.
 # Regards Marvin
 
 
 ###
-### The following variable you need to change
+### The following variable you need to change.
 ###
 
 
-#The Name that is shown at the end of the WSR
+#The Name that is shown at the end of the WSR file
 name="Marvin"
 
 
 ###
-### The following variables you may wanna change
+### The following variables you may wanna change.
 ###
 
 
-#Path where the WSR file shall be created. Potentially the path to the local WSR repository.
-local_directory="$HOME/Project/wsr"
+#Path where the WSR file is created. Potentially the path to the local wiki repository
+local_directory="."
 
-#Path to the editor I use
+#Path to the home file of my wiki 
+wiki_home_file="./home"
+
+#Path to the editor to use
 editor=/bin/vim
 
-#The default file name is set to the following
-default_file_name="$(date +"WSR %G W%U")"
+#The default name for the WSR file is set to the following
+default_file_name="$(date +"WSR%G-W%U")"
+default_remote_file_name="$(date +"WSR%G-W%U")"
 
 
 ###
-### The following variables you wanna change if you wanna include a link to your wiki in the email automatically
+### The gitlab_name and repository_name you need to change if you wanna include a link to the remote wiki repository WSR file in your WSR email.
 ###
 
 
 #Only used when Option GITLAB_LINK is set to true...
-#My Gitlab Name for accessing the WSR repository wiki
+#My Gitlab name 
 gitlab_name="mmann"
 
 #Only used when Option GITLAB_LINK is set to true...
-#My Gitlab repository name where the wiki lives
+#My Gitlab repository where the remote wiki lives
 repository_name="wsr"
 
 #Only used when Option GITLAB_LINK is set to true...
-#Path to the remote WSR wiki
-wiki="https://gitlab.vpn.cyberus-technology.de/$gitlab_name/$repository_name/-/wikis/"
+#Path to the remote wiki repository
+wiki="https://gitlab.vpn.cyberus-technology.de/$gitlab_name/$repository_name/-/wikis"
 
 
 ###
-### Options
+### Options - These options match the main use case for user that maintain a wiki. Feel free tho set them to false if the don't match your use case.
 ###
 
 
-# Include a link in the email to the WSR repository wiki
+# Include a link to the remote wiki in your WSR email
 # true = include it
 # false = don't include it
 GITLAB_LINK=false
 
-# When the editor is closed the value of $default_file_name is copied to your clipboard assuming
-# you already copied the content of the file to the main field of your email client and now intend to add the subject information
-# true = copies $default_file_name to clipboard
-# false = doesn't copy $default_file_name to clipboard
-COPY_TO_CLIPBOARD=false
+# Once you leave the editor and the email is opend it is assumed, that your next step in the shell is to push the newly added file to your remote wiki repository.
+# Additinaly it is assumed that the link that was included in the email is of no need in the wiki and so the script attempts to remove the line containing the link before you push it to the remote wiki repository.
+# true = remove the link in the WSR file
+# false = don't remove the link in the WSR file 
+ASK_TO_REMOVE_LINK=false
 
-# Right before the script is done - cd to the directory which path is stored in $dir assuming
-# you immediately wanna push your local changes to the remote repository (adds target of the link included in the file)
+# Right before the script is done - head to your local wiki repository.
+# you immediately wanna push your changes to the remote wiki repository (adds target of the link included in the file)
 # true = cds to the directory $dir
 # false = doesn't change the shell's current location
-COPY_TO_CLIPBOARD=false
+CD_AFTER_EDDITING=true
 
 
 ###
-### Execution
+### Execution starts - The following code you should not need to touch
 ###
 
 
-echo "Enter the name of the WSR file you intend to create. Press ENTER to use the default./br
-(Default: $default_file_name)"
-read "$custom_file_name"
+if test -z "$custom_file_name" ; then
+    file_name="$default_file_name"
+else
+    file_name="$custom_file_name"
+fi
 
-returnFinalFileName(){
-    if test -z "$custom_name" ; then
-        echo "$default_file_name"
-    else
-        echo "$custom_file_name"
+file_name="$(echo "$file_name" | sed -i "s/[ \t]*$//")"
+
+if test -f "$local_directory/$file_name"; then
+    file_existed_before=true
+else
+    file_existed_before=false
+fi
+
+link_to_file="$wiki/$(echo "$file_name" | sed "s/\s\+/%/g")"
+
+addToWSR(){
+    if ! "$file_existed_before"; then
+        text="$1"
+        echo "$text" >> "$local_directory/$file_name"
     fi
 }
 
-file_name=returnFinalFileName
-
-returnLinkToFileInRepository(){
-    file_name_link="${file_name// /%}"
-    echo "$wiki/file_name_link"
+addToWSRWhenConditionTrue(){
+    if ! "$file_existed_before"; then
+        text="$1"
+        condition="$2"
+        if "$condition" ; then
+            echo "$text" >> "$local_directory/$file_name"
+        fi
+    fi
 }
 
-link_to_repository=returnLinkToFileInRepository
+
+###
+### The following functions you may wanna change to alter the initial content of the WSR
+###
 
 
-if test ! -f "$FILE"; then
-    "$dir/$file_name" < echo " 
-Hi Team,
+greeting(){
+    echo "Hi Team,
 
+    "
+}
 
-find this WSR also here ([Gitlab]($link_to_repository)).
-
-
-## tl;dr  
+remainingMessage(){
+    echo "## tl;dr  
 -  
 
 
-Thats it.
-
+That's it.  
 
 Have a wonderful week  
-$my_name"
-fi
+$name"
+}
 
-vim "$dir/$file_name"
+###
+### The following code you should not need to touch but in the case of tweaking the position of the link. 
+###
 
+addToWSR greeting
+
+addToWSRWhenConditionTrue "$link_to_file" "$GITLAB_LINK"
+
+addToWSR remainingMessage
+
+"$editor" "$local_directory/$file_name"
+
+done_edditing(){
+    echo "Are you done making changes to the file and ready to create the email sketch?/n
+    Please type y or n"
+    read answer_done_edditing_question
+
+    answer_done_edditing_question="$(echo "$answer_done_edditing_question" | sed -i "s/[ \t]*$//")"
+
+    case "$answer_done_edditing_question" in
+        y)
+            #thunderbird -compose "subject='$file_name',to='team@cyberus-technology.de',body='$(cat "$local_directory/$file_name")'"&
+
+            if "$CD_AFTER_EDDITING"; then
+                cd $(dirname "$wiki_home_file")
+            fi
+
+            if "$ASK_TO_REMOVE_LINK"; then
+                ask_user(){
+                    echo "Do you wanna remove the link to the wiki from the local file?/n
+                    Please type y or n"
+                    read answer_on_question_to_remove_link
+
+                    answer_on_question_to_remove_link="$(echo "$answer_on_question_to_remove_link" | sed -i "s/[ \t]*$//")"
+
+                    case "$answer_on_question_to_remove_link" in
+                        y)
+                            sed -i "/$link_to_file/d" "$local_directory/$file_name" > "$local_directory/$file_name" ;;
+                        n)
+                            ;;
+                        *)
+                            ask_user;;
+                    esac
+                }
+            ask_user
+            fi
+
+            if "$OPEN_HOME_FILE"; then
+                xclip -sel c "["$file_name"]()" || echo "Please install xclip to use that functionality" ; return 1
+                "$editor" "$wiki_home_file"
+            fi
+            ;;
+        n)
+            ;;
+        *)
+            ask_user;;
+    esac
+}
+done_edditing
