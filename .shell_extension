@@ -1,6 +1,5 @@
 #!/bin/sh
 
-alias pls="sudo"
 alias i3conf="vim ~/.config/i3/config"
 alias audio="pavucontrol"
 alias vconf="vim ~/.config/nvim/init.vim"
@@ -13,8 +12,6 @@ alias ba="cd $HOME/Projects/bachelor_thesis_mann"
 alias c="git clean -ndx"
 alias cf="git clean -fdx"
 alias ls="ls -l"
-alias ho="cd ~"
-alias li="cd '$HOME/Projects/cyberus-workstation/ubuntu/packages/linux-slvm'"
 
 save_clean=false
 
