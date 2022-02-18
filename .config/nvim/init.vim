@@ -1,4 +1,7 @@
+set encoding=UTF-8
 set tabstop=4 
+set scrolloff=777                         " keeps the cursor in the middle of the screen when it is not at the beginning or end of the file
+set autoread
 set softtabstop=4
 set shiftwidth=4
 set expandtab                             " use the given number of spaces to insert a <Tab>
@@ -13,7 +16,6 @@ set mousehide                             " Hides mouse while typing
 set hlsearch
 set indentkeys                            " ident after certain char
 set cursorline
-set completeopt=menu,menuone,noselect
 "set background=dark  <-- scheint komplett überflüssig
 "set clipboard=unnamedplus                 " use system clipboard
 "set cc=80
@@ -24,39 +26,37 @@ set completeopt=menu,menuone,noselect
 
 call plug#begin()
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
-Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-lua/plenary.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 call plug#end()
 
 "#
 "# Lua customizations
 "#
 
-lua << EOF
-require('mod_cmp')
-require("mod_lsp")
-require('mod_telescope')
-EOF
+nnoremap gd <Nop>
+
+lua require("mod_lsp")
+lua require("mod_telescope")
 
 "#
 "# Shortcuts
 "#
+
 let mapleader = " "
+nnoremap <leader>ff <cmd>Telescope find_files cwd=~<cr>
 nnoremap <leader>p :r!
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+
 "
 nnoremap n nzzzv    " <- centers cursors while searching through files
 nnoremap N Nzzzv    " <- centers cursors while searching through files
@@ -91,6 +91,7 @@ nnoremap J :m .+1<CR>==
 nnoremap K :m .-2<CR>== 
 "
 nnoremap <SPACE> <Nop>    " <- prevents Space executed inline in case leader follows no command
+
 
 "#
 "# Design

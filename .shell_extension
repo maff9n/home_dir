@@ -15,8 +15,8 @@ alias ls="ls -l"
 alias ho="cd ~"
 alias li="cd '$HOME/Projects/cyberus-workstation/ubuntu/packages/linux-slvm'"
 alias wttr='curl wttr.in/Dresden && echo ">>> command: curl wttr.in/Dresden"'
+alias luad="$HOME/.config/nvim/lua/"
 
-# save_clean=false <-- what is this doing
 
 function fuzzy(){
     value=$(fd -p -IH -t f -E node_modules -E .git | fzf)
