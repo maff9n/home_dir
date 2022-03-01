@@ -1,10 +1,8 @@
 set encoding=UTF-8
-set tabstop=4 
 set scrolloff=777                         " keeps the cursor in the middle of the screen when it is not at the beginning or end of the file
 set autoread
-set softtabstop=4
-set shiftwidth=4
-set expandtab                             " use the given number of spaces to insert a <Tab>
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab                             " use the given number of spaces to insert a <Tab>
+set noet ci pi sts=0 sw=4 ts=4
 set relativenumber
 set number
 set nowrap
@@ -46,6 +44,7 @@ call plug#end()
 
 nnoremap gd <Nop>
 
+lua require("mod_cmp")
 lua require("mod_lsp")
 lua require("mod_telescope")
 

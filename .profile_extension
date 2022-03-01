@@ -1,5 +1,6 @@
 #!/bin/bash
 
-PATH=$PATH:~/Scripts/
-source "$HOME/.config/nvim/bundle/gruvbox/gruvbox_256palette.sh"
 
+PATH=$PATH:~/Scripts/:~/.local/bin/
+
+source "$HOME/.config/nvim/bundle/gruvbox/gruvbox_256palette.sh"
