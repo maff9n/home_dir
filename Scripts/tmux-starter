@@ -1,5 +1,5 @@
 #!/bin/bash
 
-i3-sensible-terminal -e bash -c 'tmux attach || tmux ; zsh'
+i3-sensible-terminal -e zsh -c 'tmux list-sessions; echo ">>> Attach to a given session via: tmuxa <session_name>"; $SHELL' 
 
 

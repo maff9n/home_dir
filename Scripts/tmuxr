@@ -1,0 +1,4 @@
+#!/bin/bash
+
+tmux rename-session -t "$1" "$2"
+

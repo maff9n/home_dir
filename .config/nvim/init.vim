@@ -1,8 +1,8 @@
 set encoding=UTF-8
 set scrolloff=777                         " keeps the cursor in the middle of the screen when it is not at the beginning or end of the file
 set autoread
-"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab                             " use the given number of spaces to insert a <Tab>
-set noet ci pi sts=0 sw=4 ts=4
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab                             " use the given number of spaces to insert a <Tab>
+" set noet ci pi sts=0 sw=4 ts=4
 set relativenumber
 set number
 set nowrap
