@@ -26,3 +26,5 @@
 !.zshrc
 !.tmux.conf
 !.gitignoreGLOBAL
+!.Xmodmap
+!.xinitrc

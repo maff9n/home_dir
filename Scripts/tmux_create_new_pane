@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case "$(tmux show-environment -g TMUX_SPLIT)" in
+	TMUX_SPLIT=-d)
+		tmux split-window -h ;;
+	TMUX_SPLIT=-h)
+		tmux split-window -d ;;
+	*)
+		echo "$(something unexpected happend - $0)"
+		exit 123 ;;
+esac

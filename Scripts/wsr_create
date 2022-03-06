@@ -1,0 +1,175 @@
+#!/bin/bash
+
+# PURPOSE OF THIS SCRIPT
+# This script is meant to speed up the weekly process of creating a WSR, getting an email out and maintaining a wiki holding those files.
+#
+# If this script speeded up the WSR managment for you aswell, I'd love to hear from you.
+# Regards Marvin
+
+
+###
+### Local tweaks regarding the WSRs name and content plus the editor you'd like to use
+###
+
+
+wsr_name="$(date +"WSR%G-W%U")"
+wsr_extension=".md"
+
+wsr_default_content="Hi Team,
+
+## tl;dr  
+-  
+
+
+That's it.  
+
+Have a wonderful week  
+Marvin"
+
+editor=typora
+
+
+##
+## Local paths and values that need to be set
+##
+
+
+absolut_path_local_wiki_repository="$HOME/Projects/wsr.wiki"
+
+relativ_path_local_wiki_repository_to_wsr_file_folder="."
+
+relativ_path_local_wiki_repository_to_file_where_wsr_is_linked="./home"
+
+
+###
+### Remote path to the repository the wiki belongs to (Not the path to the wiki itself)
+###
+
+
+remote_path="https://gitlab.vpn.cyberus-technology.de/mmann/wsr"
+
+
+###
+### Options - These options match the execution order in the script. Switch features on and off as you please. "true" equals "on" 
+###           If you wanna use EVERYTHING there is one dependency: xclip
+###
+
+
+FIRST_CP_WSR_LINK_TO_CLIPBOARD=true
+
+SECOND_OPEN_EMAIL_PROGRAM=true
+
+THIRD_HEAD_TO_LOCAL_WIKI_REPOSITORY=true
+
+FOURTH_CP_MARKDOWN_WSR_LINK_TO_CLIPBOARD=true
+
+FIFTH_OPEN_FILE_WHERE_WSR_IS_LINKED=true
+
+
+###
+### Execution - Feel free to alter the code but you should not need to in order to get the intially intended functionality
+###
+
+#remote_repository="https://gitlab.vpn.cyberus-technology.de/$gitlab_name/$repository_name/-/wikis"
+echo "Please type the name of the file to be created. In case a file with that name already exists this file is opened.
+Please note: The value of \$wsr_extension will be concatinated to the file name you enter.
+Press ENTER to use the default file name.\n(default name: $wsr_name)"
+
+read -r custom_name
+
+if test -z "$custom_name" ; then
+    file_name="$wsr_name"
+else
+    file_name="$custom_name"
+fi
+
+case "$relativ_path_local_wiki_repository_to_wsr_file_folder" in
+    .|"")
+        ignore_relativ_path=true;;
+    *)
+        ignore_relativ_path=false;;
+esac
+
+if "$ignore_relativ_path"; then
+    full_path="$absolut_path_local_wiki_repository/$relativ_path_local_wiki_repository_to_wsr_file_folder/$file_name$wsr_extension"
+else   
+    full_path="$absolut_path_local_wiki_repository/$file_name$wsr_extension"
+fi
+
+if test -f "$full_path"; then
+    file_existed_before=true
+else
+    file_existed_before=false
+fi
+
+if "$ignore_relativ_path"; then
+    link_to_file="$(echo "$absolut_path_local_wiki_repository/-/wikis/$file_name" | sed "s/\s\+/%/g")"
+else   
+    link_to_file="$(echo "$absolut_path_local_wiki_repository/-/wikis/$relativ_path_local_wiki_repository_to_wsr_file_folder/$file_name" | sed "s/\s\+/%/g")"
+fi
+
+if ! "$file_existed_before"; then
+    echo "$wsr_default_content" > "$full_path"
+fi
+
+"$editor" "$full_path"
+
+
+###
+### FIRST_CP_WSR_LINK_TO_CLIPBOARD
+###
+
+first(){
+    if "$FIRST_CP_WSR_LINK_TO_CLIPBOARD"; then
+        xclip -sel c "$link_to_file" || echo "Please check if you installed xclip" && return 12
+    fi
+}
+first
+
+###
+### SECOND_OPEN_EMAIL_PROGRAM
+###
+
+second(){
+    if "$SECOND_OPEN_EMAIL_PROGRAM"; then
+        echo "Are you done making changes to the file and ready to create the email sketch?
+Please type y or n"
+        read -r answer_done_edditing_question
+
+        case "$answer_done_edditing_question" in
+            y)
+                thunderbird -compose "subject='$file_name',to='team@cyberus-technology.de',body='$(cat "$full_path")'"&;;
+            n)
+                return 0;;
+            *)
+                first;;
+        esac
+    fi
+}
+second
+
+###
+### THIRD_HEAD_TO_LOCAL_WIKI_REPOSITORY
+###
+
+if "$THIRD_HEAD_TO_LOCAL_WIKI_REPOSITORY"; then
+    cd "$absolut_path_local_wiki_repository"
+fi
+
+###
+### FOURTH_CP_MARKDOWN_WSR_LINK_TO_CLIPBOARD + FIFTH_OPEN_FILE_WHERE_WSR_IS_LINKED
+###
+
+if "$FIFTH_OPEN_FILE_WHERE_WSR_IS_LINKED"; then
+    echo "Press ENTER when you have send the email and want to continue.
+(Press Ctrl+c to abort."
+
+    if "$FOURTH_CP_MARKDOWN_WSR_LINK_TO_CLIPBOARD"; then
+        echo "[$file_name]()" | xclip -sel c || echo "Please check if you installed xclip" && return 12
+    fi
+    "$editor" "$absolut_path_local_wiki_repository/$relativ_path_local_wiki_repository_to_file_where_wsr_is_linked"
+else
+    if "$FOURTH_CP_MARKDOWN_WSR_LINK_TO_CLIPBOARD"; then
+        echo "[$file_name]()" | xclip -sel c || echo "Please check if you installed xclip" && return 12
+    fi
+fi
