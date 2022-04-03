@@ -53,7 +53,10 @@ lua require("mod_telescope")
 "#
 
 let mapleader = " "
-nnoremap <leader>ff <cmd>Telescope find_files cwd=~<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>p :r!
 
 "
@@ -70,7 +73,7 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 "
-inoremap . .<C-g>u    " <- create points in the history when those chars are used
+inoremap . .<C-g>u
 inoremap ? ?<C-g>u
 inoremap ! !<C-g>u
 inoremap / /<C-g>u
