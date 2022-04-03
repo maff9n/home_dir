@@ -119,3 +119,5 @@ source $HOME/.shell_extension
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+
+alias luamake=/home/martowerubuntu/Programs/lua-language-server/3rd/luamake/luamake
