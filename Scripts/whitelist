@@ -1,0 +1,56 @@
+#!/usr/bin/python3.8
+
+from os import sep, _exit
+from os.path import normpath
+from sys import argv
+
+name_stack = ""
+
+
+def looping(path_list):
+    elem_zero_exists = True
+    elem_one_exists = True
+
+    try:
+        _ = path_list[0]
+    except IndexError:
+        elem_zero_exists = False
+
+    try:
+        _ = path_list[1]
+    except IndexError:
+        elem_one_exists = False
+
+    if not elem_zero_exists:
+        _exit(0)
+    else:
+        if not elem_one_exists:
+            global name_stack
+            print("!" + name_stack + "/" + path_list[0])
+        else:
+            name_stack = name_stack + "/" + path_list[0]
+            print("!" + name_stack)
+            print(name_stack + "/*")
+            _, *rest_of_list = path_list
+            looping(rest_of_list)
+
+
+def main():
+
+    # Deal with the situation where no parameters are given
+    try:
+        whitelist_elem = normpath(argv[1]).split(sep)
+    except IndexError:
+        print("Execution failed - Please provide a path to a file you would like to whitelist")
+        _exit(1)
+
+    # filter empty strings
+    whitelist_elem = list(filter(None, whitelist_elem))
+
+    # Output is created
+    print('/*')
+    looping(whitelist_elem)
+
+
+if __name__ == '__main__':
+    main()
