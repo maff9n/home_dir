@@ -1,5 +1,12 @@
 #!/usr/bin/python3.8
 
+# In case you use very selective whitelisting in your gitignore file this script is for you.
+# When you face the situation that you would like to whitelist another very nested "target file" in your gitignore file,
+# it is often necessary to type multiple long lines if you do not wish to include all the files on your way to the "target file".
+# Call this script and provide it with the specific path to the "target file" as its first parameter.
+# All lines of the scripts output can now be added to your gitignore file or a selection of such.
+
+
 from os import sep, _exit
 from os.path import normpath
 from sys import argv
@@ -7,7 +14,7 @@ from sys import argv
 name_stack = ""
 
 
-def looping(path_list):
+def create_output_recursivly(path_list):
     elem_zero_exists = True
     elem_one_exists = True
 
@@ -32,12 +39,12 @@ def looping(path_list):
             print("!" + name_stack)
             print(name_stack + "/*")
             _, *rest_of_list = path_list
-            looping(rest_of_list)
+            create_output_recursivly(rest_of_list)
 
 
 def main():
 
-    # Deal with the situation where no parameters are given
+    # handle the situation where no parameter is given
     try:
         whitelist_elem = normpath(argv[1]).split(sep)
     except IndexError:
@@ -48,8 +55,8 @@ def main():
     # filter empty strings
     whitelist_elem = list(filter(None, whitelist_elem))
 
-    # Output is created
-    looping(whitelist_elem)
+    # create output
+    create_output_recursivly(whitelist_elem)
 
 
 if __name__ == '__main__':
