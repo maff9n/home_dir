@@ -41,14 +41,14 @@ def main():
     try:
         whitelist_elem = normpath(argv[1]).split(sep)
     except IndexError:
-        print("Execution failed - Please provide a path to a file you would like to whitelist")
+        print(
+            "Execution failed - Please provide a path to a file you would like to whitelist")
         _exit(1)
 
     # filter empty strings
     whitelist_elem = list(filter(None, whitelist_elem))
 
     # Output is created
-    print('/*')
     looping(whitelist_elem)
 
 
